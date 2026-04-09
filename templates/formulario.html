@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Adopción | PetMatch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --accent: #f43f5e;
+            --bg: #EEF2FF;
+            --text: #1e293b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: white;
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e2e8f0;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .form-header h2 {
+            margin: 0;
+            color: var(--text);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .form-header p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #f1f5f9;
+            border-radius: 12px;
+            background: #f8fafc;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+        }
+
+        .cancel-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .cancel-link:hover {
+            color: var(--accent);
+        }
+
+        /* Pequeño detalle visual para el ID de mascota */
+        .mascota-badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="form-header">
+            <i class='bx bxs-edit-alt'></i>
+            <h2>Cuestionario de Adopción</h2>
+            <p>Por favor, completa tus datos para iniciar el proceso.</p>
+        </div>
+
+        <form action="/enviar_solicitud" method="POST">
+            <input type="hidden" name="mascota_id" value="{{ mascota_id }}">
+            
+            <div class="input-group">
+                <label><i class='bx bxs-user'></i> Nombre Completo</label>
+                <input type="text" name="nombre" placeholder="Ej: Juan Pérez" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="input-group">
+                    <label><i class='bx bxs-id-card'></i> DUI</label>
+                    <input type="text" name="dui" placeholder="00000000-0" required>
+                </div>
+                <div class="input-group">
+                    <label><i class='bx bxs-phone'></i> Teléfono</label>
+                    <input type="text" name="telefono" placeholder="7777-7777" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label><i class='bx bxs-chat'></i> ¿Por qué deseas adoptar a esta mascota?</label>
+                <textarea name="motivo" rows="4" placeholder="Cuéntanos un poco sobre el hogar que ofrecerás..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                Enviar Solicitud <i class='bx bx-send'></i>
+            </button>
+        </form>
+
+        <a href="/" class="cancel-link">Regresar al catálogo</a>
+    </div>
+
+</body>
+</html>
